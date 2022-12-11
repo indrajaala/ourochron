@@ -196,12 +196,6 @@ watch(seasons, () => {
 .sub {
   border: 1px solid black;
 }
-@media (prefers-color-scheme: dark) {
-  body{
-    background-color: red!important;
-  }
-
-}
 
 #container1 {
   width: 400px;
