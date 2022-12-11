@@ -44,6 +44,7 @@ function onClick() {
 }
 
 onMounted(()=>{
+  localStorage.setItem("theme", theme.global.name.value);
   theme.global.name.value = localStorage.getItem("theme");
   themeIndicator.value = localStorage.getItem("theme")
 })

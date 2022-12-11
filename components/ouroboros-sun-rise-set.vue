@@ -1,8 +1,5 @@
 <template>
-  <div v-if="error">
-    <v-alert type="error">{{error}}</v-alert>
-  </div>
-  <div class="parent" v-else>
+  <div class="parent">
     <div>
       <div class="sub">
         <div id="container1">
@@ -181,7 +178,7 @@ const label = false;
 
 if (window.innerWidth <= 600) {
   radius = 163
-}else {
+} else {
   radius = 198
 }
 
@@ -205,7 +202,7 @@ function generateFields() {
   distributeFields(2, {radius});
 }
 
-onBeforeRouteUpdate(()=>{
+onBeforeRouteUpdate(() => {
   generateFields();
 })
 
@@ -213,11 +210,11 @@ onMounted(() => {
   generateFields();
 });
 
-onBeforeUnmount(()=>{
+onBeforeUnmount(() => {
   generateFields();
 })
 
-onUpdated(()=>{
+onUpdated(() => {
   generateFields();
 })
 
@@ -245,7 +242,7 @@ watch([response, mark], () => {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
-    align-items:start;
+    align-items: start;
     justify-items: center;
     grid-gap: 2rem;
 
@@ -276,7 +273,7 @@ watch([response, mark], () => {
 }
 
 @media only screen and (max-width: 600px) {
-  #container1, #container2{
+  #container1, #container2 {
     width: 330px;
     height: 330px;
   }
@@ -329,13 +326,14 @@ watch([response, mark], () => {
 }
 
 @media only screen and (max-width: 600px) {
-  .crosshair-x{
+  .crosshair-x {
     width: 330px;
     top: 165px;
   }
-  .crosshair-y{
+
+  .crosshair-y {
     height: 330px;
-    left:165px
+    left: 165px
   }
 
 }
@@ -368,7 +366,7 @@ watch([response, mark], () => {
   border: 1px solid black;
 }
 
-.hours:hover, .muhurtas:hover{
+.hours:hover, .muhurtas:hover {
   scale: 4.5;
 }
 
@@ -379,7 +377,7 @@ watch([response, mark], () => {
   background-image: url("/sun.png");
   background-size: cover;
   font-size: 0;
-  border:none
+  border: none
 }
 
 
