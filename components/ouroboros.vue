@@ -307,7 +307,7 @@ watch(seasons, () => {
 .current-day {
   scale: 4;
   background-color: transparent !important;
-  background-image: url("/sunny(1).png");
+  background-image: url("/sun.png");
   background-size: cover;
   z-index: 1;
 }

@@ -376,7 +376,7 @@ watch([response, mark], () => {
   scale: 5;
   z-index: 9999999999999;
   background-color: transparent;
-  background-image: url("/sunny(1).png");
+  background-image: url("/sun.png");
   background-size: cover;
   font-size: 0;
   border:none
