@@ -108,7 +108,6 @@ function createFields(no, {start, end, label}) {
 function distributeFields(no, {radius}) {
   const fields = document.querySelectorAll(`.field${no}`);
   const container = document.querySelector(`#container${no}`);
-  console.log("the fields are", fields)
   const width = container.offsetWidth;
   const height = container.offsetHeight;
   let angle = 0;

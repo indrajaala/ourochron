@@ -98,7 +98,7 @@ const {
   error
 } = await useAsyncData('count', () => $fetch(`https://api.ipgeolocation.io/astronomy?apiKey=${apiKey}&location=${city.value}`));
 
-console.log('response sunset is', response.value);
+// console.log('response sunset is', response.value);
 
 
 const sunRise = computed(() => {

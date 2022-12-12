@@ -77,9 +77,6 @@ const {
 } = await useAsyncData('count', () => $fetch(`https://api.ipgeolocation.io/astronomy?apiKey=${apiKey}&location=${city.value}`));
 
 
-console.log('response moon is', response.value.moonrise);
-
-
 const moonRise = computed(() => {
   let data = response.value.moonrise.split(":");
   return Number(data[0]) * 60 + Number(data[1]);
