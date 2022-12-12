@@ -85,7 +85,7 @@ import {minutesToHoursMinutes} from "@/utils/MinutesToHoursMinutes";
 import {markMuhurtas} from "@/utils/markMuhurtas";
 
 const fieldSize = ref('6px');
-const fieldColor = ref('darkslateblue');
+const fieldColor = ref('dodgerblue');
 const city = ref('jangaon');
 const mark = ref('hours');
 
@@ -210,7 +210,6 @@ onMounted(() => {
 });
 
 watch([response, mark], () => {
-  console.log('the response is', response.value)
   resetFields();
   generateFields();
 })

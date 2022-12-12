@@ -199,7 +199,6 @@ onMounted(() => {
 })
 
 watch(response, () => {
-  console.log('response moon is', response.value);
   resetFields();
   generateFields();
 })

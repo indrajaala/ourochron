@@ -113,7 +113,6 @@ function distributeFields(no, {radius}) {
   let angle = 0;
   const step = (2 * Math.PI) / fields.length;
   fields.forEach((field) => {
-    console.log(field)
     let x, y;
     if (no === 1) {
       x = Math.round(width / 2 + radius * Math.cos(angle) - field.style.width / 2);
