@@ -129,8 +129,7 @@ function createFields(no, {start, end, label}) {
     })
     field.setAttribute(
         "data-title",
-        `${i},
-          ${minutesToHoursMinutes(i)}
+        `Time:${minutesToHoursMinutes(i)}
      `)
     if (i === currentTime.value) {
       field.classList.add("current-minute");

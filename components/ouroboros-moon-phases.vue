@@ -197,6 +197,7 @@ onMounted(() => {
   transition: all .1s linear;
   z-index: -1;
   background-size: cover;
+
 }
 
 .parent :deep(.field:hover) {
