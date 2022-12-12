@@ -24,6 +24,7 @@
               v-model="city"
               label="Enter a place name"
               :loading="pending"
+              :color="pending? 'primary': 'black'"
           ></v-text-field>
         </v-form>
 
@@ -83,10 +84,11 @@
 import {markHours} from "@/utils/markHours";
 import {minutesToHoursMinutes} from "@/utils/MinutesToHoursMinutes";
 import {markMuhurtas} from "@/utils/markMuhurtas";
+import {markCardinalPoints} from "~/utils/markCardinalPoints";
 
 const fieldSize = ref('6px');
 const fieldColor = ref('dodgerblue');
-const city = ref('jangaon');
+const city = ref('ujjain');
 const mark = ref('hours');
 
 const apiKey = '98ba2cc5654d49dfb4aa05c96f4c2fca';
@@ -169,6 +171,7 @@ function distributeFields(no, {radius}) {
 
     field.style.top = `${y}px`
     angle += step;
+    markCardinalPoints(fields, field);
   });
 
 }

@@ -24,6 +24,7 @@
               v-model="city"
               label="Enter a place name"
               :loading="pending"
+              :color="pending? 'primary': 'black'"
           ></v-text-field>
         </v-form>
 
@@ -61,8 +62,9 @@
 import {useDayOfTheYear} from "@/composables/doy";
 import {markHours} from "@/utils/markHours";
 import {minutesToHoursMinutes} from "@/utils/MinutesToHoursMinutes";
+import {markCardinalPoints} from "~/utils/markCardinalPoints";
 
-const city = ref('jangaon');
+const city = ref('ujjain');
 const {doy, progress} = useDayOfTheYear();
 const fieldSize = ref('6px');
 
@@ -149,6 +151,7 @@ function distributeFields(no, {radius}) {
 
     field.style.top = `${y}px`
     angle += step;
+    markCardinalPoints(fields, field);
   });
 
 }

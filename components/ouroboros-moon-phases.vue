@@ -32,6 +32,7 @@
 
 <script setup>
 import lunarCalc from "lunarphase-calculator";
+import {markCardinalPoints} from "~/utils/markCardinalPoints";
 
 
 const fieldSize = ref('20px');
@@ -90,6 +91,7 @@ function distributeFields(no, {radius}) {
 
     field.style.top = `${y}px`
     angle += step;
+    markCardinalPoints(fields, field);
   });
 
 }

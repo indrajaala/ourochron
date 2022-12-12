@@ -60,6 +60,7 @@
 import {useDayOfTheYear} from "@/composables/doy";
 import {daysInAYear} from "@/utils/daysInAYear";
 import {markRitus} from "@/utils/markRitus";
+import {markCardinalPoints} from "@/utils/markCardinalPoints";
 
 const {doy, progress} = useDayOfTheYear();
 const fieldSize = ref('8px');
@@ -122,12 +123,12 @@ function distributeFields(no, {radius}) {
       y = Math.round(width / 2 + radius * Math.cos(angle) - field.style.width / 2);
       x = Math.round(height / 2 + radius * Math.sin(angle) - field.style.height / 2);
     }
-    // container.style.position = 'relative';
-    // field.style.position = 'absolute';
+
     field.style.left = `${x}px`
 
     field.style.top = `${y}px`
     angle += step;
+    markCardinalPoints(fields, field)
   });
 
 }
