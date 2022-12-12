@@ -207,7 +207,7 @@ watch(response, () => {
 
 </script>
 
-<style>
+<style scoped>
 
 .parent {
   display: grid;
@@ -258,7 +258,7 @@ watch(response, () => {
   }
 }
 
-.field {
+.parent :deep(.field) {
   width: v-bind(fieldSize);
   height: v-bind(fieldSize);
   position: absolute;
@@ -274,15 +274,15 @@ watch(response, () => {
   z-index: -1;
 }
 
-.field:hover {
+.parent :deep(.field:hover) {
   scale: 3
 }
 
-.field1 {
+.parent :deep(.field1) {
   rotate: -90deg;
 }
 
-.field2 {
+.parent :deep(.field2) {
   rotate: -180deg;
 }
 
@@ -322,7 +322,7 @@ watch(response, () => {
 /*}*/
 
 
-.tooltip[data-title]:hover:after {
+.parent :deep(.tooltip[data-title]:hover:after) {
   content: attr(data-title);
   padding: 4px 8px;
   color: #fff;
@@ -335,7 +335,7 @@ watch(response, () => {
   z-index: 9999!important;
 }
 
-.hours {
+.parent :deep(.hours) {
   scale: 3.5;
   font-size: .20rem;
   color: white;
@@ -344,22 +344,22 @@ watch(response, () => {
   font-weight: bold;
   z-index: 2;
 }
-.hours:hover{
+.parent :deep(.hours:hover){
   scale: 4.5;
 }
 
-.current-minute {
+.parent :deep(.current-minute) {
   scale: 5;
   z-index: 10 !important;
   /*display: block;*/
   background-color: transparent;
   background-image: url("/moon15.png");
   background-size: cover;
-  font-size: 0;
+  /*font-size: 0;*/
   border:none
 }
 
-.current-minute:hover {
+.parent :deep(.current-minute:hover) {
   scale: 6;
 }
 

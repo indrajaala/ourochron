@@ -123,6 +123,8 @@ function distributeFields(no, {radius}) {
       y = Math.round(width / 2 + radius * Math.cos(angle) - field.style.width / 2);
       x = Math.round(height / 2 + radius * Math.sin(angle) - field.style.height / 2);
     }
+    // container.style.position = 'relative';
+    // field.style.position = 'absolute';
     field.style.left = `${x}px`
 
     field.style.top = `${y}px`
@@ -156,12 +158,10 @@ function generateFields() {
 }
 
 onMounted(() => {
+  resetFields();
   generateFields();
 })
 
-onBeforeRouteUpdate(()=>{
-  generateFields();
-})
 
 watch(seasons, () => {
   resetFields();
@@ -170,7 +170,7 @@ watch(seasons, () => {
 
 </script>
 
-<style>
+<style scoped>
 
 .parent {
   display: grid;
@@ -221,7 +221,7 @@ watch(seasons, () => {
   }
 }
 
-.field {
+.parent :deep(.field){
   width: v-bind(fieldSize);
   height: v-bind(fieldSize);
   position: absolute;
@@ -237,15 +237,15 @@ watch(seasons, () => {
   z-index: -1;
 }
 
-.field:hover {
+.parent :deep(.field:hover) {
   scale: 3
 }
 
-.field1 {
+.parent :deep(.field1) {
   rotate: -90deg;
 }
 
-.field2 {
+.parent :deep(.field2) {
   rotate: -180deg;
 }
 
@@ -285,7 +285,7 @@ watch(seasons, () => {
 /*}*/
 
 
-.tooltip[data-title]:hover:after {
+.parent :deep(.tooltip[data-title]:hover:after) {
   content: attr(data-title);
   padding: 4px 8px;
   color: #fff;
@@ -297,7 +297,7 @@ watch(seasons, () => {
   background: #000;
 }
 
-.current-day {
+.parent :deep(.current-day) {
   scale: 4;
   background-color: transparent !important;
   background-image: url("/sun.png");
@@ -305,11 +305,11 @@ watch(seasons, () => {
   z-index: 1;
 }
 
-.current-day:hover {
+.parent :deep(.current-day:hover) {
   scale: 5;
 }
 
-.months {
+.parent :deep(.months) {
   scale: 2.8;
   font-size: .23rem;
   color: white;
@@ -318,7 +318,7 @@ watch(seasons, () => {
   font-weight: bold;
   z-index: 2;
 }
-.months:hover {
+.parent :deep(.months:hover) {
   scale:3.8
 }
 </style>

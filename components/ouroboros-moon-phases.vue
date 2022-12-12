@@ -113,25 +113,22 @@ function generateFields() {
   distributeFields(2, {radius});
 }
 
+function resetFields() {
+  const fields = document.querySelectorAll(".field");
+  fields.forEach((field) => {
+    field.remove();
+  })
+}
+
 onMounted(() => {
+  resetFields();
   generateFields();
 })
 
 
 </script>
 
-<style>
-
-.loading {
-  height: 100vh;
-  background-color: white;
-  color: black;
-  display: grid;
-  place-items: center;
-  font-size: 3rem;
-  position: fixed;
-  left: 50%;
-}
+<style scoped>
 
 .parent {
   display: grid;
@@ -183,7 +180,7 @@ onMounted(() => {
   }
 }
 
-.field {
+.parent :deep(.field) {
   width: v-bind(fieldSize);
   height: v-bind(fieldSize);
   position: absolute;
@@ -200,24 +197,24 @@ onMounted(() => {
   background-size: cover;
 }
 
-.field:hover {
+.parent :deep(.field:hover) {
   scale: 2
 }
 
-.field1 {
+.parent :deep(.field1) {
   rotate: -90deg;
 }
 
-.field2 {
+.parent :deep(.field2) {
   rotate: -180deg;
 }
 
-.current-phase {
+.parent :deep(.current-phase) {
   scale: 2.5;
   z-index: 99;
 }
 
-.current-phase:hover {
+.parent :deep(.current-phase:hover) {
   scale: 3.5;
 }
 
@@ -256,7 +253,7 @@ onMounted(() => {
 /*}*/
 
 
-.tooltip[data-title]:hover:after {
+.parent :deep(.tooltip[data-title]:hover:after) {
   content: attr(data-title);
   padding: 4px 8px;
   color: #fff;

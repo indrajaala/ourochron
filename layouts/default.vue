@@ -21,18 +21,18 @@
       <v-divider></v-divider>
 
       <v-list density="compact" nav>
-        <a href="/">
+        <nuxt-link no-prefetch to="/">
           <v-list-item prepend-icon="mdi-link-box" title="Year" value="Year"></v-list-item>
-        </a>
-        <a href="/sun-rise-set">
+        </nuxt-link>
+        <nuxt-link no-prefetch to="/sun-rise-set">
           <v-list-item prepend-icon="mdi-link-box" title="sun" value="sun"></v-list-item>
-        </a>
-        <a href="/moon-rise-set">
+        </nuxt-link>
+        <nuxt-link no-prefetch to="/moon-rise-set">
           <v-list-item prepend-icon="mdi-link-box" title="moon" value="moon"></v-list-item>
-        </a>
-        <a href="/moon-phases">
+        </nuxt-link>
+        <nuxt-link no-prefetch to="/moon-phases">
           <v-list-item prepend-icon="mdi-link-box" title="moon-phases" value="moon-phases"></v-list-item>
-        </a>
+        </nuxt-link>
       </v-list>
 
     </v-navigation-drawer>
