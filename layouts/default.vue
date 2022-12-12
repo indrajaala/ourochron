@@ -76,4 +76,8 @@ html {
 html[data-theme='dark'] {
   --b-color: white;
 }
+
+body{
+  overflow-x: scroll;
+}
 </style>
