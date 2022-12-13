@@ -41,7 +41,7 @@ const currentTime = computed(() => {
     return Number(data[0]) * 60 + Number(data[1]);
 })
 
-const bColor = ref("");
-const tColor = ref("")
+const bColor = ref("black");
+const tColor = ref("white")
 
 export {city, response, refresh, pending, moonRise, moonSet, currentTime, sunSet, sunRise, bColor, tColor}

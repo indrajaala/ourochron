@@ -66,13 +66,13 @@ onMounted(() => {
 })
 
 onMounted(() => {
-  watch(themeIndicator,() => {
+  watch(theme.global.name,() => {
 
-    if(themeIndicator.value === "light"){
+    if(theme.global.name.value === "light"){
       bColor.value = 'black';
       tColor.value = "white";
     }
-    if(themeIndicator.value === "dark"){
+    if(theme.global.name.value === "dark"){
       bColor.value = 'darkgrey';
       tColor.value = 'black';
     }
