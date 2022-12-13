@@ -31,8 +31,8 @@
               Ritu
             </v-btn>
 
-            <v-btn value="solar">
-              Solar
+            <v-btn value="astronomical">
+              Astronomical
             </v-btn>
           </v-btn-toggle>
           <v-btn-toggle
@@ -41,16 +41,34 @@
               color="deep-purple-accent-3"
               group
           >
-            <v-btn value="astronomical">
-              Astronomical
-            </v-btn>
-            <br>
             <v-btn value="meteorological">
               Meteorological
             </v-btn>
+            <v-btn value="solar">
+              Solar
+            </v-btn>
 
           </v-btn-toggle>
+
+
         </v-col>
+        <v-card-text v-if="seasons === 'ritu'">
+          <div class="seasons vasanta" ></div> Vasanta <br>
+          <div class="seasons grishma" ></div> Grishma <br>
+          <div class="seasons varsha" ></div> Varsha <br>
+          <div class="seasons sharad" ></div> Sharad <br>
+          <div class="seasons hemanta" ></div> Hemanta <br>
+          <div class="seasons shishira" ></div> Shishira
+        </v-card-text>
+        <v-card-text v-if="seasons === 'astronomical' || seasons === 'meteorological' || seasons === 'solar'">
+          <div class="seasons spring" ></div> Spring <br>
+          <div class="seasons summer" ></div> Summer <br>
+          <div class="seasons fall" ></div> Fall <br>
+          <div class="seasons winter" ></div> Winter <br>
+        </v-card-text>
+
+
+
       </v-card>
     </div>
   </div>
@@ -64,7 +82,7 @@ import {markCardinalPoints} from "@/utils/markCardinalPoints";
 
 const {doy, progress} = useDayOfTheYear();
 const fieldSize = ref('8px');
-const fieldColor = ref('blue');
+const fieldColor = ref('dodgerblue');
 const seasons = ref('ritu');
 
 function createFields(no, {start, end, label}) {
@@ -171,7 +189,9 @@ watch(seasons, () => {
 </script>
 
 <style scoped>
-
+body{
+  color:aqua
+}
 .parent {
   display: grid;
   place-items: center;
@@ -321,4 +341,32 @@ watch(seasons, () => {
 .parent :deep(.months:hover) {
   scale:3.8
 }
+
+.seasons{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: black;
+  display: inline-block;
+}
+
+.parent :deep(.vasanta), .parent :deep(.spring){
+  background-color: seagreen;
+}
+.parent :deep(.grishma), .parent :deep(.summer){
+  background-color: orangered;
+}
+.parent :deep(.varsha){
+  background-color: dodgerblue;
+}
+.parent :deep(.sharad), .parent :deep(.fall){
+  background-color: yellow;
+}
+.parent :deep(.hemanta){
+  background-color: saddlebrown;
+}
+.parent :deep(.shishira), .parent :deep(.winter){
+  background-color: aqua;
+}
+
 </style>

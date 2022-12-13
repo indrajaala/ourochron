@@ -36,7 +36,7 @@ import {markCardinalPoints} from "~/utils/markCardinalPoints";
 
 
 const fieldSize = ref('20px');
-const fieldColor = ref('blue');
+const fieldColor = ref('dodgerblue');
 const lunarDay = Math.round(lunarCalc.getLunarDay(new Date()));
 const lunarPhase = lunarCalc.getLunarPhase(lunarDay);
 
