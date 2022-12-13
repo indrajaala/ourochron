@@ -85,7 +85,8 @@ import {markHours} from "@/utils/markHours";
 import {minutesToHoursMinutes} from "@/utils/MinutesToHoursMinutes";
 import {markMuhurtas} from "@/utils/markMuhurtas";
 import {markCardinalPoints} from "@/utils/markCardinalPoints";
-import {city, response, pending,refresh, sunRise, sunSet,currentTime, bColor, tColor} from "@/stores/ourochron";
+import {city, bColor, tColor, url} from "@/stores/ourochron";
+import {computed} from "vue";
 
 const fieldSize = ref('6px');
 const fieldColor = ref('dodgerblue');
@@ -96,14 +97,30 @@ useHead({
 })
 
 
-// watch([bColor,tColor],()=>{
-//
-//   console.log('the b color is', bColor.value);
-//   console.log('the t color is', tColor.value);
-//
-// })
-// console.log('response sunset is', response.value);
+const {
+  data: response,
+  refresh,
+  pending,
+  error
+} = await useAsyncData('count', () => $fetch(url.value));
 
+const sunRise = computed(() => {
+  let data = response.value.sunrise.split(":");
+  return Number(data[0]) * 60 + Number(data[1]);
+})
+
+const sunSet = computed(() => {
+  let data = response.value.sunset.split(":");
+  return Number(data[0]) * 60 + Number(data[1]);
+})
+
+const currentTime = computed(() => {
+  let data = response.value.current_time.split(":");
+  return Number(data[0]) * 60 + Number(data[1]);
+})
+
+
+// console.log('response sunset is', response.value);
 
 
 function createFields(no, {start, end, label}) {
@@ -192,9 +209,7 @@ function generateFields() {
 }
 
 
-
 onMounted(() => {
-  refresh();
   resetFields();
   generateFields();
 });
@@ -345,7 +360,7 @@ watch([response, mark], () => {
   border: 1px solid v-bind(bColor);
 }
 
-.parent :deep(.hours:hover),.parent :deep(.muhurtas:hover) {
+.parent :deep(.hours:hover), .parent :deep(.muhurtas:hover) {
   scale: 4.5;
 }
 
