@@ -34,6 +34,10 @@
 import lunarCalc from "lunarphase-calculator";
 import {markCardinalPoints} from "~/utils/markCardinalPoints";
 
+useHead({
+  title: 'ourochron - Moon phases',
+})
+
 
 const fieldSize = ref('20px');
 const fieldColor = ref('dodgerblue');

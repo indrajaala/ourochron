@@ -71,6 +71,10 @@ const fieldSize = ref('6px');
 const fieldColor = ref('dodgerblue');
 const apiKey = '98ba2cc5654d49dfb4aa05c96f4c2fca';
 
+useHead({
+  title: 'ourochron - Moon rise and set',
+})
+
 const {
   data: response,
   refresh,

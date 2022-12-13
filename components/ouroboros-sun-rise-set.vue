@@ -91,6 +91,10 @@ const fieldColor = ref('dodgerblue');
 const city = ref('ujjain');
 const mark = ref('hours');
 
+useHead({
+  title: 'ourochron - Sun rise and set',
+})
+
 const apiKey = '98ba2cc5654d49dfb4aa05c96f4c2fca';
 
 const {

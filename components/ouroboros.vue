@@ -80,6 +80,10 @@ import {daysInAYear} from "@/utils/daysInAYear";
 import {markRitus} from "@/utils/markRitus";
 import {markCardinalPoints} from "@/utils/markCardinalPoints";
 
+useHead({
+  title: 'ourochron - Year',
+})
+
 const {doy, progress} = useDayOfTheYear();
 const fieldSize = ref('8px');
 const fieldColor = ref('dodgerblue');
