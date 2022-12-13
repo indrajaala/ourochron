@@ -22,8 +22,8 @@
 
         <v-card-title>Info</v-card-title>
         <v-card-text>
-          lunar_Day:{{lunarDay}} <br>
-          lunar_Phase:{{lunarPhase}}
+          lunar_Day: {{lunarDay}} <br>
+          lunar_Phase: {{lunarPhase}}
         </v-card-text>
       </v-card>
     </div>

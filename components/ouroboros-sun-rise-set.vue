@@ -36,13 +36,13 @@
 
         <v-card-title>Location</v-card-title>
         <v-card-text>
-          lat:{{ response.location.latitude }} <br>
-          lon:{{ response.location.longitude }}<br>
-          city:{{ response.location.city }}<br>
-          country:{{ response.location.country }} <br>
-          state:{{ response.location.state }}<br>
-          current_time:{{ response.current_time }}<br>
-          date:{{ response.date }}
+          lat: {{ response.location.latitude }} <br>
+          lon: {{ response.location.longitude }}<br>
+          city: {{ response.location.city }}<br>
+          country: {{ response.location.country }} <br>
+          state: {{ response.location.state }}<br>
+          current_time: {{ response.current_time }}<br>
+          date: {{ response.date }}
         </v-card-text>
         <v-card-title>Info</v-card-title>
         <v-card-text>
