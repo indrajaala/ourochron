@@ -79,6 +79,8 @@ import {useDayOfTheYear} from "@/composables/doy";
 import {daysInAYear} from "@/utils/daysInAYear";
 import {markRitus} from "@/utils/markRitus";
 import {markCardinalPoints} from "@/utils/markCardinalPoints";
+import {bColor, tColor} from "@/stores/ourochron";
+
 
 useHead({
   title: 'ourochron - Year',
@@ -217,7 +219,7 @@ body{
 }
 
 .sub {
-  border: 1px solid black;
+  border: 1px solid v-bind(bColor);
 }
 
 #container1 {
@@ -277,7 +279,7 @@ body{
 .crosshair-x {
   width: 400px;
   height: 1px;
-  background: #000;
+  background: v-bind(bColor);
   position: absolute;
   left: 0;
   top: 200px;
@@ -286,7 +288,7 @@ body{
 .crosshair-y {
   width: 1px;
   height: 400px;
-  background: #000;
+  background: v-bind(bColor);
   position: absolute;
   left: 200px;
   top: 0;
@@ -336,9 +338,9 @@ body{
 .parent :deep(.months) {
   scale: 2.8;
   font-size: .23rem;
-  color: white;
-  border: 1px solid black;
-  background-color: black !important;
+  color: v-bind(tColor);
+  border: 1px solid v-bind(bColor);
+  background-color: v-bind(bColor) !important;
   font-weight: bold;
   z-index: 2;
 }

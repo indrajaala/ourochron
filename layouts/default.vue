@@ -25,7 +25,8 @@
           <v-list-item prepend-icon="mdi-calendar" title="Year" value="Year"></v-list-item>
         </nuxt-link>
         <nuxt-link no-prefetch to="/sun-rise-set">
-          <v-list-item prepend-icon="mdi-white-balance-sunny" title="sun rise and set" value="sun rise and set"></v-list-item>
+          <v-list-item prepend-icon="mdi-white-balance-sunny" title="sun rise and set"
+                       value="sun rise and set"></v-list-item>
         </nuxt-link>
         <nuxt-link no-prefetch to="/moon-rise-set">
           <v-list-item prepend-icon="mdi-moon-full" title="moon rise and set" value="moon rise and set"></v-list-item>
@@ -44,12 +45,11 @@
 </template>
 <script setup>
 import {useTheme} from 'vuetify'
-
-
-
+import{bColor, tColor} from "@/stores/ourochron";
 const theme = useTheme();
 const themeIndicator = ref('light');
 const drawer = ref(null);
+
 
 function onClick() {
   themeIndicator.value = localStorage.getItem("theme") === 'light' ? 'dark' : 'light';
@@ -64,20 +64,31 @@ onMounted(() => {
     themeIndicator.value = localStorage.getItem("theme");
   }
 })
+
+onMounted(() => {
+  watch(themeIndicator,() => {
+
+    if(themeIndicator.value === "light"){
+      bColor.value = 'black';
+      tColor.value = "white";
+    }
+    if(themeIndicator.value === "dark"){
+      bColor.value = 'darkgrey';
+      tColor.value = 'black';
+    }
+  })
+})
+
 </script>
 
+
 <style>
+
 a {
   text-decoration: none;
 }
 
-html {
-  --b-color: black;
-}
 
-html[data-theme='dark'] {
-  --b-color: white;
-}
 
 body {
   overflow-x: scroll;

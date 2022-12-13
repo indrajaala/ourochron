@@ -84,43 +84,26 @@
 import {markHours} from "@/utils/markHours";
 import {minutesToHoursMinutes} from "@/utils/MinutesToHoursMinutes";
 import {markMuhurtas} from "@/utils/markMuhurtas";
-import {markCardinalPoints} from "~/utils/markCardinalPoints";
+import {markCardinalPoints} from "@/utils/markCardinalPoints";
+import {city, response, pending,refresh, sunRise, sunSet,currentTime, bColor, tColor} from "@/stores/ourochron";
 
 const fieldSize = ref('6px');
 const fieldColor = ref('dodgerblue');
-const city = ref('ujjain');
 const mark = ref('hours');
 
 useHead({
   title: 'ourochron - Sun rise and set',
 })
 
-const apiKey = '98ba2cc5654d49dfb4aa05c96f4c2fca';
 
-const {
-  data: response,
-  refresh,
-  pending,
-  error
-} = await useAsyncData('count', () => $fetch(`https://api.ipgeolocation.io/astronomy?apiKey=${apiKey}&location=${city.value}`));
-
+// watch([bColor,tColor],()=>{
+//
+//   console.log('the b color is', bColor.value);
+//   console.log('the t color is', tColor.value);
+//
+// })
 // console.log('response sunset is', response.value);
 
-
-const sunRise = computed(() => {
-  let data = response.value.sunrise.split(":");
-  return Number(data[0]) * 60 + Number(data[1]);
-})
-
-const sunSet = computed(() => {
-  let data = response.value.sunset.split(":");
-  return Number(data[0]) * 60 + Number(data[1]);
-})
-
-const currentTime = computed(() => {
-  let data = response.value.current_time.split(":");
-  return Number(data[0]) * 60 + Number(data[1])
-})
 
 
 function createFields(no, {start, end, label}) {
@@ -211,6 +194,7 @@ function generateFields() {
 
 
 onMounted(() => {
+  refresh();
   resetFields();
   generateFields();
 });
@@ -245,7 +229,7 @@ watch([response, mark], () => {
 }
 
 .sub {
-  border: 1px solid #000;
+  border: 1px solid v-bind(bColor);
 }
 
 #container1 {
@@ -305,7 +289,7 @@ watch([response, mark], () => {
 .crosshair-x {
   width: 400px;
   height: 1px;
-  background: #000;
+  background: v-bind(bColor);
   position: absolute;
   left: 0;
   top: 200px;
@@ -314,7 +298,7 @@ watch([response, mark], () => {
 .crosshair-y {
   width: 1px;
   height: 400px;
-  background: #000;
+  background: v-bind(bColor);
   position: absolute;
   left: 200px;
   top: 0;
@@ -354,11 +338,11 @@ watch([response, mark], () => {
 .parent :deep(.hours), .parent :deep(.muhurtas) {
   scale: 3.5;
   font-size: .20rem;
-  color: white;
-  background-color: black;
+  color: v-bind(tColor);
+  background-color: v-bind(bColor);
   font-weight: bold;
   z-index: 2;
-  border: 1px solid black;
+  border: 1px solid v-bind(bColor);
 }
 
 .parent :deep(.hours:hover),.parent :deep(.muhurtas:hover) {

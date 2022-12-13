@@ -62,9 +62,10 @@
 import {useDayOfTheYear} from "@/composables/doy";
 import {markHours} from "@/utils/markHours";
 import {minutesToHoursMinutes} from "@/utils/MinutesToHoursMinutes";
-import {markCardinalPoints} from "~/utils/markCardinalPoints";
+import {markCardinalPoints} from "@/utils/markCardinalPoints";
+import {response,refresh, pending, city,moonRise,moonSet,currentTime, bColor, tColor} from "@/stores/ourochron";
 
-const city = ref('ujjain');
+
 const {doy, progress} = useDayOfTheYear();
 const fieldSize = ref('6px');
 
@@ -75,28 +76,10 @@ useHead({
   title: 'ourochron - Moon rise and set',
 })
 
-const {
-  data: response,
-  refresh,
-  pending,
-  error
-} = await useAsyncData('count', () => $fetch(`https://api.ipgeolocation.io/astronomy?apiKey=${apiKey}&location=${city.value}`));
+
+// console.log('the response is', response)
 
 
-const moonRise = computed(() => {
-  let data = response.value.moonrise.split(":");
-  return Number(data[0]) * 60 + Number(data[1]);
-});
-
-const moonSet = computed(() => {
-  let data = response.value.moonset.split(":");
-  return Number(data[0]) * 60 + Number(data[1]);
-})
-
-const currentTime = computed(() => {
-  let data = response.value.current_time.split(":");
-  return Number(data[0]) * 60 + Number(data[1]);
-})
 // console.log('monoRise is', moonRise);
 // console.log('moonset is', moonSet);
 // console.log('the moonrise in minutes are', moonRiseInMin);
@@ -200,6 +183,7 @@ async function refreshData() {
 }
 
 onMounted(() => {
+  refresh();
   resetFields();
   generateFields();
 })
@@ -235,7 +219,7 @@ watch(response, () => {
 }
 
 .sub {
-  border: 1px solid #000;
+  border: 1px solid v-bind(bColor);
 }
 
 #container1 {
@@ -294,7 +278,7 @@ watch(response, () => {
 .crosshair-x {
   width: 400px;
   height: 1px;
-  background: #000;
+  background: v-bind(bColor);
   position: absolute;
   left: 0;
   top: 200px;
@@ -303,7 +287,7 @@ watch(response, () => {
 .crosshair-y {
   width: 1px;
   height: 400px;
-  background: #000;
+  background: v-bind(bColor);
   position: absolute;
   left: 200px;
   top: 0;
@@ -343,9 +327,9 @@ watch(response, () => {
 .parent :deep(.hours) {
   scale: 3.5;
   font-size: .20rem;
-  color: white;
-  background-color: black;
-  border: 1px solid black;
+  color: v-bind(tColor);
+  background-color: v-bind(bColor);
+  border: 1px solid v-bind(bColor);
   font-weight: bold;
   z-index: 2;
 }

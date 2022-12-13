@@ -33,6 +33,8 @@
 <script setup>
 import lunarCalc from "lunarphase-calculator";
 import {markCardinalPoints} from "~/utils/markCardinalPoints";
+import {bColor, tColor} from "@/stores/ourochron";
+
 
 useHead({
   title: 'ourochron - Moon phases',
@@ -158,7 +160,7 @@ onMounted(() => {
 
 
 .sub {
-  border: 1px solid #000;
+  border: 1px solid v-bind(bColor);
 }
 
 #container1 {
@@ -228,7 +230,7 @@ onMounted(() => {
 .crosshair-x {
   width: 400px;
   height: 1px;
-  background: #000;
+  background: v-bind(bColor);
   position: absolute;
   left: 0;
   top: 200px;
@@ -237,7 +239,7 @@ onMounted(() => {
 .crosshair-y {
   width: 1px;
   height: 400px;
-  background: #000;
+  background: v-bind(bColor);
   position: absolute;
   left: 200px;
   top: 0;
