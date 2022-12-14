@@ -64,14 +64,13 @@ import {markHours} from "@/utils/markHours";
 import {minutesToHoursMinutes} from "@/utils/MinutesToHoursMinutes";
 import {markCardinalPoints} from "@/utils/markCardinalPoints";
 import {
-  city,
   bColor,
   tColor,
-  url
+  getUrl
 } from "@/stores/ourochron";
-import {computed} from "vue";
+import {computed, ref} from "vue";
 
-
+const city = ref("ujjain");
 const {doy, progress} = useDayOfTheYear();
 const fieldSize = ref('6px');
 
@@ -87,7 +86,7 @@ const {
   refresh,
   pending,
   error
-} = await useAsyncData('count', () => $fetch(url.value));
+} = await useAsyncData('count', () => $fetch(getUrl(city.value)));
 
 const moonRise = computed(() => {
   let data = response.value.moonrise.split(":");

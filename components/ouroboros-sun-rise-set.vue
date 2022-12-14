@@ -85,12 +85,14 @@ import {markHours} from "@/utils/markHours";
 import {minutesToHoursMinutes} from "@/utils/MinutesToHoursMinutes";
 import {markMuhurtas} from "@/utils/markMuhurtas";
 import {markCardinalPoints} from "@/utils/markCardinalPoints";
-import {city, bColor, tColor, url} from "@/stores/ourochron";
-import {computed} from "vue";
+import { bColor, tColor, getUrl} from "@/stores/ourochron";
+import {computed, ref} from "vue";
 
 const fieldSize = ref('6px');
 const fieldColor = ref('dodgerblue');
 const mark = ref('hours');
+const city = ref("ujjain");
+
 
 useHead({
   title: 'ourochron - Sun rise and set',
@@ -102,7 +104,7 @@ const {
   refresh,
   pending,
   error
-} = await useAsyncData('count', () => $fetch(url.value));
+} = await useAsyncData('count', () => $fetch(getUrl(city.value)));
 
 const sunRise = computed(() => {
   let data = response.value.sunrise.split(":");

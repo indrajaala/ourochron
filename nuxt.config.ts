@@ -12,8 +12,6 @@ export default defineNuxtConfig({
     ],
 
     modules: [
-        // pinia plugin
-        '@pinia/nuxt',
     ],
     build: {
         transpile: ['vuetify']
@@ -23,9 +21,6 @@ export default defineNuxtConfig({
         define: {
             'process.env.DEBUG': false,
         },
-        build: {
-            target: 'esnext'
-        }
     },
 
 })
