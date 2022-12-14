@@ -45,7 +45,8 @@
 </template>
 <script setup>
 import {useTheme} from 'vuetify'
-import{bColor, tColor} from "@/stores/ourochron";
+import {bColor, tColor} from "@/stores/ourochron";
+
 const theme = useTheme();
 const themeIndicator = ref('light');
 const drawer = ref(null);
@@ -66,13 +67,13 @@ onMounted(() => {
 })
 
 onMounted(() => {
-  watch(theme.global.name,() => {
+  watch(theme.global.name, () => {
 
-    if(theme.global.name.value === "light"){
+    if (theme.global.name.value === "light") {
       bColor.value = 'black';
       tColor.value = "white";
     }
-    if(theme.global.name.value === "dark"){
+    if (theme.global.name.value === "dark") {
       bColor.value = 'darkgrey';
       tColor.value = 'black';
     }
@@ -88,8 +89,11 @@ a {
   text-decoration: none;
 }
 
-
-
+.cardinal-points{
+  background-color: v-bind(bColor)!important;
+  border:1px solid v-bind(bColor);
+  z-index: 10;
+}
 body {
   overflow-x: scroll;
 }
