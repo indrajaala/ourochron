@@ -5,7 +5,7 @@
         <v-app-bar-nav-icon class="d-lg-none" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       </template>
 
-      <v-app-bar-title>
+      <v-app-bar-title class="app-title" @click="goHome">
         <v-icon icon="mdi-infinity"></v-icon>
         ourochron
       </v-app-bar-title>
@@ -44,6 +44,7 @@
   </v-app>
 </template>
 <script setup>
+const router = useRouter();
 import {useTheme} from 'vuetify'
 import {bColor, tColor} from "@/stores/ourochron";
 
@@ -80,6 +81,10 @@ onMounted(() => {
   })
 })
 
+function goHome(){
+  router.push({path:"/"})
+}
+
 </script>
 
 
@@ -96,5 +101,9 @@ a {
 }
 body {
   overflow-x: scroll;
+}
+
+.app-title{
+  cursor: pointer;
 }
 </style>
