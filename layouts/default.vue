@@ -91,8 +91,8 @@ a {
 
 .cardinal-points{
   background-color: v-bind(bColor)!important;
-  border:1px solid v-bind(bColor);
-  z-index: 10;
+  border:1px solid v-bind(bColor)!important;
+  z-index: 10!important;
 }
 body {
   overflow-x: scroll;
