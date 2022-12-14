@@ -22,17 +22,17 @@
 
       <v-list density="compact" nav>
         <nuxt-link no-prefetch to="/">
-          <v-list-item prepend-icon="mdi-calendar" title="Year" value="Year"></v-list-item>
+          <v-list-item :active="$route.path === '/'"  prepend-icon="mdi-calendar" title="Year" value="Year"></v-list-item>
         </nuxt-link>
         <nuxt-link no-prefetch to="/sun-rise-set">
-          <v-list-item prepend-icon="mdi-white-balance-sunny" title="sun rise and set"
+          <v-list-item :active="$route.path === '/sun-rise-set'" prepend-icon="mdi-white-balance-sunny" title="sun rise and set"
                        value="sun rise and set"></v-list-item>
         </nuxt-link>
         <nuxt-link no-prefetch to="/moon-rise-set">
-          <v-list-item prepend-icon="mdi-moon-full" title="moon rise and set" value="moon rise and set"></v-list-item>
+          <v-list-item :active="$route.path === '/moon-rise-set'" prepend-icon="mdi-moon-full" title="moon rise and set" value="moon rise and set"></v-list-item>
         </nuxt-link>
         <nuxt-link no-prefetch to="/moon-phases">
-          <v-list-item prepend-icon="mdi-moon-waxing-crescent" title="moon phases" value="moon-phases"></v-list-item>
+          <v-list-item :active="$route.path === '/moon-phases'" prepend-icon="mdi-moon-waxing-crescent" title="moon phases" value="moon-phases"></v-list-item>
         </nuxt-link>
       </v-list>
 
