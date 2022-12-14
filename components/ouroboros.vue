@@ -337,7 +337,7 @@ body{
 
 .parent :deep(.months) {
   scale: 2.8;
-  font-size: .23rem;
+  font-size: .25rem;
   color: v-bind(tColor);
   border: 1px solid v-bind(bColor);
   background-color: v-bind(bColor) !important;
