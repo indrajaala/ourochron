@@ -64,7 +64,6 @@ function onClick() {
 }
 
 onMounted(() => {
-  // localStorage.setItem("theme", theme.global.name.value);
   if (currentTheme.value) {
     theme.global.name.value = currentTheme.value;
     themeIndicator.value = currentTheme.value;
