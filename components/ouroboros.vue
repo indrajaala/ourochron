@@ -343,7 +343,7 @@ body {
   background-color: transparent !important;
   background-image: url("/sun.png");
   background-size: cover;
-  z-index: 1;
+  z-index: 999;
 }
 
 .parent :deep(.current-day:hover) {
