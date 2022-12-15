@@ -54,9 +54,9 @@ const drawer = ref(null);
 
 
 function onClick() {
-  themeIndicator.value = localStorage.getItem("theme") === 'light' ? 'dark' : 'light';
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark';
   localStorage.setItem("theme", theme.global.name.value);
+  themeIndicator.value = localStorage.getItem("theme");
 }
 
 onMounted(() => {
