@@ -47,23 +47,27 @@
 const router = useRouter();
 import {useTheme} from 'vuetify'
 import {bColor, tColor} from "@/stores/ourochron";
+import {useStorage} from "@vueuse/core";
+
 
 const theme = useTheme();
 const themeIndicator = ref('light');
 const drawer = ref(null);
+const currentTheme = useStorage("currentTheme", theme.global.name.value);
+
 
 
 function onClick() {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark';
-  localStorage.setItem("theme", theme.global.name.value);
-  themeIndicator.value = localStorage.getItem("theme");
+  currentTheme.value = theme.global.name.value;
+  themeIndicator.value = currentTheme.value;
 }
 
 onMounted(() => {
   // localStorage.setItem("theme", theme.global.name.value);
-  if (localStorage.getItem("theme")) {
-    theme.global.name.value = localStorage.getItem("theme");
-    themeIndicator.value = localStorage.getItem("theme");
+  if (currentTheme.value) {
+    theme.global.name.value = currentTheme.value;
+    themeIndicator.value = currentTheme.value;
   }
 })
 
