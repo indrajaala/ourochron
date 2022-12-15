@@ -21,8 +21,8 @@
 
         <v-form ref="form" @submit.prevent @keyup.enter="refreshData">
           <v-text-field
-              v-model="city"
-              label="Enter a place name"
+              v-model="location"
+              label="Enter a location name"
               :loading="pending"
               :color="pending? 'primary': 'black'"
           ></v-text-field>
@@ -87,11 +87,12 @@ import {markMuhurtas} from "@/utils/markMuhurtas";
 import {markCardinalPoints} from "@/utils/markCardinalPoints";
 import { bColor, tColor, getUrl} from "@/stores/ourochron";
 import {computed, ref} from "vue";
+import {useStorage} from "@vueuse/core";
 
 const fieldSize = ref('6px');
 const fieldColor = ref('dodgerblue');
 const mark = ref('hours');
-const city = ref("ujjain");
+const location = useStorage("sunRiseLocation", "ujjain");
 
 
 useHead({
@@ -104,7 +105,7 @@ const {
   refresh,
   pending,
   error
-} = await useAsyncData('count', () => $fetch(getUrl(city.value)));
+} = await useAsyncData('count', () => $fetch(getUrl(location.value)));
 
 const sunRise = computed(() => {
   let data = response.value.sunrise.split(":");
@@ -200,6 +201,7 @@ function resetFields() {
     field.remove();
   })
 }
+
 
 function generateFields() {
   createFields(1, {start: sunRise.value, end: sunSet.value, label});

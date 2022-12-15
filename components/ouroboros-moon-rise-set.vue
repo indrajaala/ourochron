@@ -21,8 +21,8 @@
 
         <v-form ref="form" @submit.prevent @keyup.enter="refreshData">
           <v-text-field
-              v-model="city"
-              label="Enter a place name"
+              v-model="location"
+              label="Enter a location name"
               :loading="pending"
               :color="pending? 'primary': 'black'"
           ></v-text-field>
@@ -63,6 +63,8 @@ import {useDayOfTheYear} from "@/composables/doy";
 import {markHours} from "@/utils/markHours";
 import {minutesToHoursMinutes} from "@/utils/MinutesToHoursMinutes";
 import {markCardinalPoints} from "@/utils/markCardinalPoints";
+import {useStorage} from "@vueuse/core";
+
 import {
   bColor,
   tColor,
@@ -70,7 +72,7 @@ import {
 } from "@/stores/ourochron";
 import {computed, ref} from "vue";
 
-const city = ref("ujjain");
+const location = useStorage("moonRiseLocation", "ujjain");
 const {doy, progress} = useDayOfTheYear();
 const fieldSize = ref('6px');
 
@@ -86,7 +88,7 @@ const {
   refresh,
   pending,
   error
-} = await useAsyncData('count', () => $fetch(getUrl(city.value)));
+} = await useAsyncData('count', () => $fetch(getUrl(location.value)));
 
 const moonRise = computed(() => {
   let data = response.value.moonrise.split(":");

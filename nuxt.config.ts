@@ -14,6 +14,9 @@ export default defineNuxtConfig({
     build: {
         transpile: ['vuetify']
     },
+    modules: [
+        '@vueuse/nuxt',
+    ],
     ssr: false,
     vite: {
         define: {
