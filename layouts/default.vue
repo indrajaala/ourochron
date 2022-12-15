@@ -68,7 +68,7 @@ onMounted(() => {
 })
 
 onMounted(() => {
-  watch(theme.global.name, () => {
+  watchEffect( () => {
 
     if (theme.global.name.value === "light") {
       bColor.value = 'black';
