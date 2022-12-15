@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div >
+    <div>
       <v-card width="360">
         <v-card-title>Seasons</v-card-title>
         <v-col
@@ -53,20 +53,29 @@
 
         </v-col>
         <v-card-text v-if="seasons === 'ritu'">
-          <div class="seasons vasanta" ></div> Vasanta <br>
-          <div class="seasons grishma" ></div> Grishma <br>
-          <div class="seasons varsha" ></div> Varsha <br>
-          <div class="seasons sharad" ></div> Sharad <br>
-          <div class="seasons hemanta" ></div> Hemanta <br>
-          <div class="seasons shishira" ></div> Shishira
+          <div class="seasons vasanta"></div>
+          Vasanta <br>
+          <div class="seasons grishma"></div>
+          Grishma <br>
+          <div class="seasons varsha"></div>
+          Varsha <br>
+          <div class="seasons sharad"></div>
+          Sharad <br>
+          <div class="seasons hemanta"></div>
+          Hemanta <br>
+          <div class="seasons shishira"></div>
+          Shishira
         </v-card-text>
         <v-card-text v-if="seasons === 'astronomical' || seasons === 'meteorological' || seasons === 'solar'">
-          <div class="seasons spring" ></div> Spring <br>
-          <div class="seasons summer" ></div> Summer <br>
-          <div class="seasons fall" ></div> Fall <br>
-          <div class="seasons winter" ></div> Winter <br>
+          <div class="seasons spring"></div>
+          Spring <br>
+          <div class="seasons summer"></div>
+          Summer <br>
+          <div class="seasons fall"></div>
+          Fall <br>
+          <div class="seasons winter"></div>
+          Winter <br>
         </v-card-text>
-
 
 
       </v-card>
@@ -98,13 +107,15 @@ function createFields(no, {start, end, label}) {
     field.classList.add(`field${no}`, `el${i}`, `field`, `tooltip`);
     field.addEventListener('mouseenter', () => {
       field.style.zIndex = "9999"
+    });
+    field.addEventListener('mouseleave', () => {
+      field.style.zIndex = "1"
     })
+
     field.setAttribute(
         "data-title",
-        `DOY: ${i},\n
-          Date: ${new Date(new Date().getFullYear(), 0, i).toLocaleString('en-US', {month: "long"})}
-          ${new Date(new Date().getFullYear(), 0, i).getDate()}
-      `)
+        `DOY: ${i},
+Date: ${new Date(new Date().getFullYear(), 0, i).toLocaleString('en-US', {month: "long"})} ${new Date(new Date().getFullYear(), 0, i).getDate()}`)
 
 
     if (seasons.value === 'ritu') {
@@ -162,7 +173,7 @@ const label = false;
 
 if (window.innerWidth <= 600) {
   radius = 163
-}else {
+} else {
   radius = 198
 }
 
@@ -195,9 +206,10 @@ watch(seasons, () => {
 </script>
 
 <style scoped>
-body{
-  color:aqua
+body {
+  color: aqua
 }
+
 .parent {
   display: grid;
   place-items: center;
@@ -206,12 +218,13 @@ body{
   /*grid-template-rows: 1fr 1fr;*/
 
 }
+
 @media only screen and (max-width: 600px) {
   .parent {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
-    align-items:start;
+    align-items: start;
     justify-items: center;
     grid-gap: 2rem;
 
@@ -241,13 +254,13 @@ body{
 }
 
 @media only screen and (max-width: 600px) {
-  #container1, #container2{
+  #container1, #container2 {
     width: 330px;
     height: 330px;
   }
 }
 
-.parent :deep(.field){
+.parent :deep(.field) {
   width: v-bind(fieldSize);
   height: v-bind(fieldSize);
   position: absolute;
@@ -295,16 +308,18 @@ body{
 }
 
 @media only screen and (max-width: 600px) {
-  .crosshair-x{
+  .crosshair-x {
     width: 330px;
     top: 165px;
   }
-  .crosshair-y{
+
+  .crosshair-y {
     height: 330px;
-    left:165px
+    left: 165px
   }
 
 }
+
 /*.tooltip{*/
 /*  position:relative;*/
 /*  display: inline-block;*/
@@ -318,7 +333,7 @@ body{
   position: absolute;
   left: 5px;
   top: -10px;
-  white-space: nowrap;
+  white-space: pre;
   border-radius: 2px;
   background: #000;
 }
@@ -344,11 +359,12 @@ body{
   font-weight: bold;
   z-index: 2;
 }
+
 .parent :deep(.months:hover) {
-  scale:3.8
+  scale: 3.8
 }
 
-.seasons{
+.seasons {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -356,22 +372,27 @@ body{
   display: inline-block;
 }
 
-.parent :deep(.vasanta), .parent :deep(.spring){
+.parent :deep(.vasanta), .parent :deep(.spring) {
   background-color: seagreen;
 }
-.parent :deep(.grishma), .parent :deep(.summer){
+
+.parent :deep(.grishma), .parent :deep(.summer) {
   background-color: orangered;
 }
-.parent :deep(.varsha){
+
+.parent :deep(.varsha) {
   background-color: dodgerblue;
 }
-.parent :deep(.sharad), .parent :deep(.fall){
+
+.parent :deep(.sharad), .parent :deep(.fall) {
   background-color: yellow;
 }
-.parent :deep(.hemanta){
+
+.parent :deep(.hemanta) {
   background-color: saddlebrown;
 }
-.parent :deep(.shishira), .parent :deep(.winter){
+
+.parent :deep(.shishira), .parent :deep(.winter) {
   background-color: aqua;
 }
 

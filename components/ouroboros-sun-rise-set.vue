@@ -85,7 +85,7 @@ import {markHours} from "@/utils/markHours";
 import {minutesToHoursMinutes} from "@/utils/MinutesToHoursMinutes";
 import {markMuhurtas} from "@/utils/markMuhurtas";
 import {markCardinalPoints} from "@/utils/markCardinalPoints";
-import { bColor, tColor, getUrl} from "@/stores/ourochron";
+import {bColor, tColor, getUrl} from "@/stores/ourochron";
 import {computed, ref} from "vue";
 import {useStorage} from "@vueuse/core";
 
@@ -134,10 +134,13 @@ function createFields(no, {start, end, label}) {
     field.addEventListener('mouseenter', () => {
       field.style.zIndex = "999999"
     })
+
+    field.addEventListener('mouseleave', () => {
+      field.style.zIndex = "1"
+    })
     field.setAttribute(
         "data-title",
-        `Time:${minutesToHoursMinutes(i)}
-     `)
+        `Time:${minutesToHoursMinutes(i)}`)
     if (i === currentTime.value) {
       field.classList.add("current-minute");
     }
@@ -349,7 +352,7 @@ watch([response, mark], () => {
   position: absolute;
   left: 5px;
   top: -10px;
-  white-space: nowrap;
+  white-space: pre;
   border-radius: 2px;
   background: #000;
 }
@@ -370,7 +373,7 @@ watch([response, mark], () => {
 
 .parent :deep(.current-minute) {
   scale: 5;
-  z-index: 9999999999999;
+  z-index: 99;
   background-color: transparent;
   background-image: url("/sun.png");
   background-size: cover;

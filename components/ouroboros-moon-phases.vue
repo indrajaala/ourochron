@@ -58,6 +58,10 @@ function createFields(no, {start, end, label}) {
     field.addEventListener('mouseenter', () => {
       field.style.zIndex = "99999999";
     })
+    field.addEventListener('mouseleave', () => {
+      field.style.zIndex = "1"
+    })
+
     field.setAttribute(
         "data-title",
         `Lunar Day: ${i}
