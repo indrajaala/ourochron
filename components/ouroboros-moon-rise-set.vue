@@ -91,13 +91,22 @@ const {
 } = await useAsyncData('count', () => $fetch(getUrl(location.value)));
 
 const moonRise = computed(() => {
-  let data = response.value.moonrise.split(":");
-  return Number(data[0]) * 60 + Number(data[1]);
+  if (response.value.moonrise === "-:-") {
+    return 0
+  } else {
+    let data = response.value.moonrise.split(":");
+    return Number(data[0]) * 60 + Number(data[1]);
+
+  }
 });
 
 const moonSet = computed(() => {
-  let data = response.value.moonset.split(":");
-  return Number(data[0]) * 60 + Number(data[1]);
+  if (response.value.moonset === "-:-") {
+    return 1440
+  } else {
+    let data = response.value.moonset.split(":");
+    return Number(data[0]) * 60 + Number(data[1]);
+  }
 })
 
 
@@ -105,7 +114,7 @@ const currentTime = computed(() => {
   let data = response.value.current_time.split(":");
   return Number(data[0]) * 60 + Number(data[1]);
 })
-// console.log('the response is', response)
+console.log('the response is', response)
 
 
 // console.log('monoRise is', moonRise);
@@ -179,7 +188,7 @@ const label = false;
 
 if (window.innerWidth <= 600) {
   radius = 163
-}else {
+} else {
   radius = 198
 }
 
@@ -241,7 +250,7 @@ watch(response, () => {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
-    align-items:start;
+    align-items: start;
     justify-items: center;
     grid-gap: 2rem;
 
@@ -271,7 +280,7 @@ watch(response, () => {
 }
 
 @media only screen and (max-width: 600px) {
-  #container1, #container2{
+  #container1, #container2 {
     width: 330px;
     height: 330px;
   }
@@ -324,13 +333,14 @@ watch(response, () => {
 }
 
 @media only screen and (max-width: 600px) {
-  .crosshair-x{
+  .crosshair-x {
     width: 330px;
     top: 165px;
   }
-  .crosshair-y{
+
+  .crosshair-y {
     height: 330px;
-    left:165px
+    left: 165px
   }
 
 }
@@ -351,7 +361,7 @@ watch(response, () => {
   white-space: pre;
   border-radius: 2px;
   background: #000;
-  z-index: 9999!important;
+  z-index: 9999 !important;
 }
 
 .parent :deep(.hours) {
@@ -363,7 +373,8 @@ watch(response, () => {
   font-weight: bold;
   z-index: 2;
 }
-.parent :deep(.hours:hover){
+
+.parent :deep(.hours:hover) {
   scale: 4.5;
 }
 
@@ -375,7 +386,7 @@ watch(response, () => {
   background-image: url("/moon15.png");
   background-size: cover;
   /*font-size: 0;*/
-  border:none
+  border: none
 }
 
 .parent :deep(.current-minute:hover) {
