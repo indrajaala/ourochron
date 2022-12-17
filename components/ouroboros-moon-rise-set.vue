@@ -102,7 +102,7 @@ const moonRise = computed(() => {
 
 const moonSet = computed(() => {
   if (response.value.moonset === "-:-") {
-    return 1440
+    return 0
   } else {
     let data = response.value.moonset.split(":");
     return Number(data[0]) * 60 + Number(data[1]);
