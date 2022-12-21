@@ -18,7 +18,7 @@
 
 
       <v-card width="360">
-
+        <enable-disable-current label="current minute" el="current-minute"/>
         <v-form ref="form" @submit.prevent @keyup.enter="refreshData">
           <v-text-field
               v-model="location"
@@ -143,6 +143,7 @@ function createFields(no, {start, end, label}) {
         `Time:${minutesToHoursMinutes(i)}`)
     if (i === currentTime.value) {
       field.classList.add("current-minute");
+      field.id= "current-minute";
     }
 
     if (mark.value === "hours") {

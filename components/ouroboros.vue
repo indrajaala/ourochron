@@ -16,6 +16,7 @@
     </div>
     <div>
       <v-card width="360">
+        <enable-disable-current label="current day" el="current-day"/>
         <v-card-title>Seasons</v-card-title>
         <v-col
             cols="12"
@@ -89,6 +90,7 @@ import {daysInAYear} from "@/utils/daysInAYear";
 import {markRitus} from "@/utils/markRitus";
 import {markCardinalPoints} from "@/utils/markCardinalPoints";
 import {bColor, tColor} from "@/stores/ourochron";
+import EnableDisableCurrent from "~/components/enableDisableCurrent.vue";
 
 
 useHead({
@@ -133,6 +135,7 @@ Date: ${new Date(new Date().getFullYear(), 0, i).toLocaleString('en-US', {month:
     markMonths(i, field);
     if (i === doy) {
       field.classList.add("current-day");
+      field.id = "current-day"
     }
     if (label === true) {
       field.textContent = `${i}`
