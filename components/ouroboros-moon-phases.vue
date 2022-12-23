@@ -118,8 +118,8 @@ if (window.innerWidth <= 600) {
 
 function generateFields() {
   createFields(1, {start: 7, end: 21, label})
-  createFields(2, {start: 22, end: 30, label})
-  createFields(2, {start: 1, end: 6, label})
+  createFields(2, {start: 22, end: 29, label})
+  createFields(2, {start: 0, end: 6, label})
 
   distributeFields(1, {radius});
   distributeFields(2, {radius});
